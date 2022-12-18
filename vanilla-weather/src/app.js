@@ -38,20 +38,27 @@ function displayWeather(response) {
 
   document.querySelector("#icon").innerHTML = iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function showFahrenheitTemp(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheitLink = document.querySelector("#units");
-  let temp = (fahrenheitLink.innerHTML * 9) / 5 + 32;
-  fahrenheitLink.innerHTML = Math.round(temp);
+  let temperatureElement = document.querySelector("#temperature");
+  linkCelsius.remove("active");
+  linkFahrenheit.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-let fahrenheitElement = document.querySelector("#linkFahrenheit");
-fahrenheitElement.addEventListener("click", showFahrenheitTemp);
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  linkCelsius.classList.add("active");
+  linkFahrenheit.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
 
 function searchCity(city) {
   let apiKey = "405f120f098105bcacb069eb602acf8e";
