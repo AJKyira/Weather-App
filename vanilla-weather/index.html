@@ -11,52 +11,52 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-
-    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
       <div class="app">
-        <form id="form">
+        <form  class="form"  id="form">
           <input type="text" placeholder="Type your city" id="city-input" />
-          <input id="button" type="submit" value="Search" />
+          <input class="button" type="submit" value="Search" />
         </form>
 
-        <h1 id="city">Accra</h1>
-        <div class="Dayoff">
+        <h1 id="city"> Accra </h1>
+        <div class="dayOff">
           <span id="date"> Saturday 11:26am </span>
           <div id="description">Mostly sunny</div>
         </div>
 
         <div class="row">
           <div class="col-5">
-            <span class="temp" id="temperature">
-              <img
-                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-              />
-              30</span
+            <span class="temperature" id="temperature">
+               <img src="" alt="" id="icon"
+            /></span> 
+              </span
             >
             <span class="units">
-              ℃ | <a href="#" id="linkFahrenheit">℉ </a></span
+              <a href="#" id="linkCelsius"> ℃ </a>
+              |
+              <a href="#" id="linkFahrenheit"> ℉ </a></span
             >
           </div>
 
           <div class="col-6">
             <ul class="channel">
               <li>Humidity: <span id="humidity"> </span>%</li>
-              <li>Wind: <span id="wind"></span>km/h</li>
+              <li>Wind: <span id="wind"> </span>km/h</li>
             </ul>
           </div>
         </div>
+        <small class="text">
+          <a href="https://github.com/AJKyira/Weather-App" target="_blank">
+            open-source code
+          </a>
+          by Kyira
+        </small>
       </div>
-      <small>
-        <a href="https://github.com/AJKyira/Weather-App" target="_blank">
-          open-source code
-        </a>
-        by Kyira
-      </small>
     </div>
 
     <script src="src/app.js"></script>
