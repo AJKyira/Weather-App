@@ -36,21 +36,27 @@ function displayWeather(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 
-  document.querySelector("#icon").innerHTML = iconElement.setAttribute(
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.icon}.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  linkCelsius.remove("active");
-  linkFahrenheit.add("active");
+  linkCelsius.classList.remove("active");
+  linkFahrenheit.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+
+let linkFahrenheit = document.querySelector("#linkFahrenheit");
+linkFahrenheit.addEventListener("click", displayFahrenheitTemperature);
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
@@ -59,6 +65,9 @@ function displayCelsiusTemperature(event) {
   linkFahrenheit.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+let linkCelsius = document.querySelector("#linkCelsius");
+linkCelsius.addEventListener("click", displayCelsiusTemperature);
 
 function searchCity(city) {
   let apiKey = "405f120f098105bcacb069eb602acf8e";
@@ -86,4 +95,6 @@ dateElement.innerHTML = formatDate(currentTime);
 let searchForm = document.querySelector("#form");
 searchForm.addEventListener("submit", submit);
 
-searchCity("");
+let celsiusTemperature = null;
+
+searchCity("Accra");
